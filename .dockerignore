@@ -1,0 +1,18 @@
+.git
+.github
+.gitignore
+.env
+node_modules
+tests
+storage/logs/*.log
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+*.md
+.editorconfig
+.phpunit.result.cache
+.DS_Store
+Thumbs.db
+
+# NE PAS ignorer public/ - c'est crucial !
+# NE PAS ignorer vendor/ si vous n'installez pas composer dans Docker
