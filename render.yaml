@@ -6,7 +6,7 @@ services:
       composer install --no-dev --optimize-autoloader
       php artisan config:clear
       php artisan route:clear
-    startCommand: null
+    startCommand: php artisan serve --host=8.0.0.0 --port=$PORT
     envVars:
       - key: PHP_EXTENSIONS
         value: pdo_mysql
