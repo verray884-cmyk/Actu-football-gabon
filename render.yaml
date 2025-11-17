@@ -1,53 +1,12 @@
 services:
   - type: web
-    name: football-actuel-gabon
-    env: docker
-    plan: free
-    dockerfilePath: ./Dockerfile
+    name: votre-app-laravel
+    env: php
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      php artisan config:clear
+      php artisan route:clear
+    startCommand: null
     envVars:
-      - key: APP_NAME
-        value: "FootballActuelGabon"
-      - key: APP_ENV
-        value: production
-      - key: APP_DEBUG
-        value: "false"
-      - key: APP_KEY
-        value: base64:yoPOyrq4Qe6P++5mrIR1lrvKriVR0G+xHvc2eUE0jDA=
-      - key: APP_URL
-        value: https://football-actuel-gabon.onrender.com
-      - key: LOG_CHANNEL
-        value: stack
-      - key: LOG_LEVEL
-        value: debug
-      - key: SESSION_DRIVER
-        value: database
-      - key: CACHE_DRIVER
-        value: database
-      - key: QUEUE_CONNECTION
-        value: database
-      - key: DB_CONNECTION
-        value: pgsql
-      - key: DB_PORT
-        value: "5432"
-      - key: DB_HOST
-        fromDatabase:
-          name: actufootgabon
-          property: host
-      - key: DB_DATABASE
-        fromDatabase:
-          name: actufootgabon
-          property: database
-      - key: DB_USERNAME
-        fromDatabase:
-          name: actufootgabon
-          property: user
-      - key: DB_PASSWORD
-        fromDatabase:
-          name: actufootgabon
-          property: password
-
-databases:
-  - name: actufootgabon
-    databaseName: actufootgabon
-    user: actufootgabon_user
-    plan: free
+      - key: PHP_EXTENSIONS
+        value: pdo_mysql
